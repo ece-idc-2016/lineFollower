@@ -21,4 +21,6 @@ HOW TO UPLOAD CODE TO GITHUB
 
 6. then type "git commit -m "COMMIT MESSAGE"".
 
-7. type "git push origin master" to officially commit your changes. good job! if you check github you will see it worked.
+7. type "git push origin *YOURNAME*" to officially commit your changes. good job! if you check github you will see it worked.
+
+8. If you feel confident that you aren't overwriting anyone else's code, switch to master and merge your branch to master. do this by typing "git checkout master" and then "git merge *YOURNAME*". then type "git push origin master" and you're done.
