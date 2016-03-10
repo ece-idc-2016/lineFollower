@@ -4,6 +4,7 @@ This is a repository for line follower code. Instructions for
 hardware setup should be forthcoming as well. 
 
 HOW TO UPLOAD CODE TO GITHUB
+
 1. clone the repository. this means typing in "git clone git@github.com:ece-idc-2016/lineFollower.git" to your terminal. only do this one time.
 
 2. change directories to the repository you just cloned. this means typing "cd lineFollower" in your terminal.
