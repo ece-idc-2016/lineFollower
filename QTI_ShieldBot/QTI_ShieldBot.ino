@@ -36,7 +36,7 @@ Other Arduino boards may not be compatible.
 
 Servo servoL;                                // Define the left and right servos
 Servo servoR;
-
+int delay=230; // delay in milliseconds. This can be adjusted later if need be. 
 // Perform these steps with the Arduino is first powered on
 void setup()
 {
@@ -50,10 +50,10 @@ void loop()
 {
   DDRD |= B11110000;                         // Set direction of Arduino pins D4-D7 as OUTPUT
   PORTD |= B11110000;                        // Set level of Arduino pins D4-D7 to HIGH
-  delayMicroseconds(230);                    // Short delay to allow capacitor charge in QTI module
+  delayMicroseconds(delay);                    // Short delay to allow capacitor charge in QTI module
   DDRD &= B00001111;                         // Set direction of pins D4-D7 as INPUT
   PORTD &= B00001111;                        // Set level of pins D4-D7 to LOW
-  delayMicroseconds(230);                    // Short delay
+  delayMicroseconds(delay);                    // Short delay
   int pins = PIND;                           // Get values of pins D0-D7
   pins >>= 4;                                // Drop off first four bits of the port; keep only pins D4-D7
   
@@ -63,31 +63,36 @@ void loop()
   int vL, vR;
   switch(pins)                               // Compare pins to known line following states
   {
-    case B1000:                        
+    // full speed to the left                       
+    case B1000:  // ...if only black on far left (bot has overshot line to the right)
       vL = -100;                             // -100 to 100 indicate course correction values
       vR = 100;                              // -100: full reverse; 0=stopped; 100=full forward
       break;
-    case B1100:                        
+    // 50% speed to the left (right wheel leads)                         
+    case B1100: // ...if black on left two QTIs
       vL = 0;
       vR = 100;
       break;
-    case B0100:                        
+    // 25% speed to the left (right wheel leads)                     
+    case B0100: // ...if only black on left-middle QTI
       vL = 50;
       vR = 100;
       break;
-    case B0110:                        
+    // 100% speed ahead                      
+    case B0110:  // ...if black on center two QTIs
       vL = 100;
       vR = 100;
       break;
-    case B0010:                        
+    // 25% speed to the right                     
+    case B0010: // ...if 
       vL = 100;
       vR = 50;
       break;
-    case B0011:                        
+    case B0011:  // 50% speed to the right (left wheel leads)                       
       vL = 100;
       vR = 0;
       break;
-    case B0001:                        
+    case B0001:  // full speed to the right                       
       vL = 100;
       vR = -100;
       break;
