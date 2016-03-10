@@ -44,3 +44,23 @@ to make sure you have the current version. **do this every time!!!**
 - type ```git push origin *YOURNAME*``` to officially commit your changes. good job! if you check github you will see it worked.
 
 - If you feel confident that you aren't overwriting anyone else's code, switch to master and merge your branch to master. do this by typing ```git checkout master``` and then ```git merge *YOURNAME*``` then type ```git push origin master``` and you're done.
+
+-overview after first setup:
+```
+cd lineFollower
+git checkout *YOURNAME*
+git pull
+vim FILENAME.ino
+*Make changes*
+git add FILENAME.ino
+git commit -m "COMMIT MESSAGE"
+git push origin YOURNAME
+```
+
+if you feel confident in not overwriting code
+```
+git checkout master
+git status
+git merge *YOURNAME*
+git push origin master
+```
