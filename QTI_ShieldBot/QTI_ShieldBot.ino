@@ -36,7 +36,7 @@ Other Arduino boards may not be compatible.
 
 Servo servoL;                                // Define the left and right servos
 Servo servoR;
-int delay=230; // delay in milliseconds. This can be adjusted later if need be. 
+// int delay=230; // delay in milliseconds. This can be adjusted later if need be. 
 // Perform these steps with the Arduino is first powered on
 void setup()
 {
@@ -50,10 +50,10 @@ void loop()
 {
   DDRD |= B11110000;                         // Set direction of Arduino pins D4-D7 as OUTPUT
   PORTD |= B11110000;                        // Set level of Arduino pins D4-D7 to HIGH
-  delayMicroseconds(delay);                    // Short delay to allow capacitor charge in QTI module
+  delayMicroseconds(230);                    // Short delay to allow capacitor charge in QTI module
   DDRD &= B00001111;                         // Set direction of pins D4-D7 as INPUT
   PORTD &= B00001111;                        // Set level of pins D4-D7 to LOW
-  delayMicroseconds(delay);                    // Short delay
+  delayMicroseconds(230);                    // Short delay
   int pins = PIND;                           // Get values of pins D0-D7
   pins >>= 4;                                // Drop off first four bits of the port; keep only pins D4-D7
   
@@ -84,7 +84,7 @@ void loop()
       vR = 100;
       break;
     // 25% speed to the right                     
-    case B0010: // ...if 
+    case B0010: // ...if only black 
       vL = 100;
       vR = 50;
       break;
