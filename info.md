@@ -13,4 +13,6 @@
 * "Figure out what kind of onditions you need to implement- wide circle, small circle" 
 * "take into account the different conditions as far as light and other things" 
 
+# Conditions currently implemented: 
 
+[insert helpful text here] 
