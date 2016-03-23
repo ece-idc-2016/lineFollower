@@ -12,10 +12,15 @@ Arduino Uno:
 
 Wiring Diagram for QTI Sensors:
 Arduino          Sensor
-D7               QTI4 - Far left
+D7               QTI4 - Far left 
 D6               QTI3 - Mid left
 D5               QTI2 - Mid right
 D4               QTI1 - Far right
+
+far left: pin 9 
+middle left: 6 
+middle right: 5 
+far right: 4
 
 Wiring Diagram for Servos:
 Arduino          Servo
@@ -33,7 +38,6 @@ Other Arduino boards may not be compatible.
 */
 
 #include <Servo.h>                           // Use the Servo library (included with Arduino IDE)  
-
 Servo servoL;                                // Define the left and right servos
 Servo servoR;
 // int delay=230; // delay in milliseconds. This can be adjusted later if need be. 
