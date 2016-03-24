@@ -1,3 +1,10 @@
+/* 
+ *  
+ *  
+ *  We need to build in an auto-calibration case which can be entered when a button is pushed. 
+ */
+
+
 #include <Servo.h>                           // Use the Servo library (included with Arduino IDE)  
 
 Servo servoL;                                // Define the left and right servos
@@ -7,7 +14,7 @@ int farLP = 7;
 int centerLP = 6;
 int centerRP = 5;
 int farRP = 4;
-int g1=25; // originally 200 
+int g1=25; // worked at 25. 
 
 
 
@@ -34,28 +41,28 @@ long RCTime(int sensorIn){
 }
 
 int isHighfR(int rctime) {
-  if(rctime < 75) // was 100 
+  if(rctime < 40) // was 75. Changing for yellow.
     return 0;
   else
     return 1;
 }
 
 int isHighCR(int rctime) {
-  if(rctime < 50)
+  if(rctime < 40) // 50 
     return 0;
   else
     return 1;
 }
 
 int isHighCL(int rctime) {
-  if(rctime < 60)
+  if(rctime < 50) // was 60 
     return 0;
   else
     return 1;
 }
 
 int isHighfL(int rctime) {
-  if(rctime < 100)
+  if(rctime < 40) // was 100 
     return 0;
   else
     return 1;
@@ -106,11 +113,11 @@ void loop()
       break;
     case 1100:                        
       vL = 0; //originally -g1. 
-      vR = g1;   // g1 was initially 200. vr was initially 0. 
+      vR = 1.5*g1;   // g1 was initially 200. vr was initially 0. 
       break;
       // adding another case. Hope nothing catches fire. 
     case 0011:
-      vL=g1;
+      vL=1.5*g1; // note extra 
       vR=0;
       break;
     case 101:

@@ -3,7 +3,7 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(RCTime(7));      // Connect to pin 2, display results
+  Serial.println(RCTime(6));      // Connect to pin 2, display results
   delay(250);         // Wait 250 ms
 }
 
@@ -21,20 +21,20 @@ long RCTime(int sensorIn){
 }
 
 /* sensor on pin 4: (far right) 
- *  WHITE: ~12
- *  BLACK: 145-153
+ *  WHITE: ~12  
+ *  BLACK: 145-153 
  *  
  *  sensor on pin 5: (center right) 
  *   WHITE: ~8 
- *   BLACK: ~94
+ *   BLACK: ~94 
  *   
  *   sensor on pin 6: (center left) 
  *   
- *   WHITE: ~7
- *   BLACK: ~122
+ *   WHITE: ~7 ** dirty mat: 9
+ *   BLACK: ~122 ** dirty mat: 58
  *   
  *   sensor on pin 7: (far left) 
- *   WHITE: ~12
- *   BLACK: ~145
+ *   WHITE: ~12 ** dirty mat: 11 
+ *   BLACK: ~145 ** dirty mat: 70
  */
  
