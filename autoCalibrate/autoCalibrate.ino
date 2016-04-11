@@ -16,6 +16,8 @@ int centerLP = 6;
 int centerRP = 5;
 int farRP = 4;
 int g1=25; // worked at 25. 
+int buttonState=0;
+int button=2; // put a button somewhere. Where, is the question. 
 
 
 
@@ -25,6 +27,7 @@ void setup()
   Serial.begin(9600);                        // Set up Arduino Serial Monitor at 9600 baud
   servoL.attach(13);                         // Attach (programmatically connect) servos to pins on Arduino
   servoR.attach(12);
+  pinMode(button,OUTPUT);
   
 }
 
@@ -71,6 +74,58 @@ int isHighfL(int rctime) {
 
 void loop()
 {
+
+if(buttonState==0){ // until we push the button...
+buttonState=digitalRead(button);
+delay(100); // wait a bit. 
+  
+}
+buttonState=0; // reset El Button
+
+// run some auto-calibrate code: 
+
+ pinMode(farLP, OUTPUT);
+  pinMode(centerLP, OUTPUT);
+  pinMode(centerRP, OUTPUT);
+  pinMode(farRP, OUTPUT);
+  
+  digitalWrite(farLP, HIGH);
+  digitalWrite(centerLP, HIGH);
+  digitalWrite(centerRP, HIGH);
+  digitalWrite(farRP, HIGH);
+  delayMicroseconds(230); // allow capcitor charge in QTI
+
+  pinMode(farLP, INPUT);
+  pinMode(centerLP, INPUT);
+  pinMode(centerRP, INPUT);
+  pinMode(farRP, INPUT);
+
+  digitalWrite(farLP, LOW);
+  digitalWrite(centerLP, LOW);
+  digitalWrite(centerRP, LOW);
+  digitalWrite(farRP, LOW);
+
+  delayMicroseconds(230);
+
+  int t4 = RCTime(farRP)/2;
+  int t1 = RCTime(centerRP)/2;
+  int t2 = RCTime(centerLP)/2;
+  int t3 = RCTime(farLP)/2; 
+  Serial.println('Black QTI values measured.');
+
+// this should store our thresholds 
+
+
+if(buttonState==0){ // until we push the button...
+buttonState=digitalRead(button);
+delay(100); // wait a bit. 
+
+
+}
+
+ while(true){ // run this code forevah 
+
+
   pinMode(farLP, OUTPUT);
   pinMode(centerLP, OUTPUT);
   pinMode(centerRP, OUTPUT);
@@ -173,5 +228,6 @@ void loop()
   servoR.writeMicroseconds(1500 - vR);
   
   delay(50);                                // Delay for 50 milliseconds (1/20 second)
+ }
 }
 

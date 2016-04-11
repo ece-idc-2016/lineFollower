@@ -3,8 +3,8 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(RCTime(6));      // Connect to pin 2, display results
-  delay(250);         // Wait 250 ms
+  Serial.println(RCTime(7));      // Connect to pin 2, display results
+  delay(1000);         // Wait 250 ms
 }
 
 long RCTime(int sensorIn){
@@ -18,6 +18,20 @@ long RCTime(int sensorIn){
       duration++;
    }
    return duration;
+/*
+   long RCTime(int sensorIn){
+   long duration = 0;
+   pinMode(sensorIn, OUTPUT);     // Make pin OUTPUT
+   digitalWrite(sensorIn, HIGH);  // Pin HIGH (discharge capacitor)
+   delay(1);                      // Wait 1ms
+   pinMode(sensorIn, INPUT);      // Make pin INPUT
+   digitalWrite(sensorIn, LOW);   // Turn off internal pullups
+   while(digitalRead(sensorIn)){  // Wait for pin to go LOW
+      duration++;
+   }
+   return duration;
+}
+*/
 }
 
 /* sensor on pin 4: (far right) 
@@ -30,11 +44,16 @@ long RCTime(int sensorIn){
  *   
  *   sensor on pin 6: (center left) 
  *   
- *   WHITE: ~7 ** dirty mat: 9
+ *   WHITE: ~7 ** dirty mat: 9 ** dirty mat RFID
  *   BLACK: ~122 ** dirty mat: 58
  *   
  *   sensor on pin 7: (far left) 
  *   WHITE: ~12 ** dirty mat: 11 
  *   BLACK: ~145 ** dirty mat: 70
  */
- 
+
+
+ /*
+  * 
+  * 
+  */
